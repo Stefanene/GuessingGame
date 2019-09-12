@@ -1,0 +1,31 @@
+#include <iostream>
+#include <stdlib.h>
+#include <time.h>
+using namespace std;
+
+int main() {
+  int input = 0;
+  int rand;
+  int guesses = 0;
+  srand (time(NULL));
+  cout << "Random number between 0 and 100 generated." << endl;
+  rand = rand() % 101;
+  cout << "Guess the number:" << endl;
+  cin >> input;
+  while(input!=rand) {
+    if(input<rand) {
+      cout << "Your guess is too small." << endl;
+      cout << "Enter again:" << endl;
+      cin >> input;
+      guesses++;
+    }
+    else if (input>rand) {
+      cout << "Your guess is too big." << endl;
+      cout << "Enter again:" << endl;
+      cin >> input;
+      guesses++;
+    }
+  }
+  cout << "Your guess of " << input << " was right!!" << endl;
+  cout << "It took you " << guesses++ << " guesses to get it right." << endl;
+}
