@@ -17,20 +17,25 @@ int main() {
     guesses = 1;
     srand (time(NULL));
     cout << "Random number between 0 and 100 generated." << endl;
+    //get random number
     random = rand() % 101;
     cout << "Guess the number:" << endl;
     cin >> input;
     while(input!=random) {
+      //if guess is smaller
       if(input<random) {
         cout << "Your guess is too small." << endl;
         cout << "Enter again:" << endl;
         cin >> input;
+	//increase number of guesses
         guesses++;
       }
-       else if (input>random) {
+      //if guess is bigger
+      else if (input>random) {
          cout << "Your guess is too big." << endl;
          cout << "Enter again:" << endl;
          cin >> input;
+	 //increment number of guesses
          guesses++;
        }
     }
@@ -38,11 +43,22 @@ int main() {
     cout << "It took you " << guesses++ << " guesses to get it right." << endl;
     //play again
     cout << "Would you like to play again? y/n: " << endl;
-    cin >> in;
-    if(in == 'y') {
-      play = true;
-    } else if (in == 'n') {
-      play = false;
-    }
+    bool yn = true;
+    do {
+      cin >> in;
+      if(in == 'y') {
+        //keep program running
+        play = true;
+        yn = true;
+      } else if (in == 'n') {
+        //end program at the end of loop
+        play = false;
+        yn = true;
+      } else {
+        //if input is not y or n
+        cout << "Invalid input. Type y or n: " << endl;
+        yn = false;
+      }
+    } while (!yn);
   }
 }
